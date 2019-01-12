@@ -6,10 +6,12 @@ public class Board {
     private int height;
 
     private Cell[][] boardModel;
+    private int[] oneDimensionValuesArray;
 
     public Board(int size, int[] cellsValues) {
         this.width = this.height = size;
         this.boardModel = new Cell[size][size];
+        this.oneDimensionValuesArray = cellsValues;
 
         int counter = 0;
         for (int i = 0; i < size; i++) {
@@ -18,6 +20,14 @@ public class Board {
                 else {this.boardModel[i][j] = new Cell(i, j, cellsValues[counter], false); counter++;}
             }
         }
+    }
+
+    public int[] getOneDimensionValuesArray() {
+        return oneDimensionValuesArray;
+    }
+
+    public int getOneDimensionValuesArrayElement(int index) {
+        return this.oneDimensionValuesArray[index];
     }
 
     public int getWidth() {
@@ -63,5 +73,14 @@ public class Board {
 
     public void setBoardCellBlank(int x, int y, boolean blankStatus) {
         this.boardModel[x][y].setBlank(blankStatus);
+    }
+
+    public Cell getBlank() {
+        for (int i = 0; i < this.width; i++) {
+            for (int j = 0; j < this.height; j++) {
+                if (this.boardModel[i][j].isBlank()) {return this.getBoardCell(i, j);}
+            }
+        }
+        return null;
     }
 }

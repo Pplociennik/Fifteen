@@ -18,4 +18,9 @@ public class BoardConsoleView {
             System.out.println();
         }
     }
+
+    public void showCheckingResult(boolean result) {
+        if (result) {System.out.println("Zadanie ma rozwiązanie!");}
+        else {System.out.println("Mamy problem! To zadanie jest nierozwiązywalne!");}
+    }
 }
