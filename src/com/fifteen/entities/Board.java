@@ -7,17 +7,15 @@ public class Board {
 
     private Cell[][] boardModel;
 
-    public Board(int size, int blankX, int blankY, int[] cellsValues) {
+    public Board(int size, int[] cellsValues) {
         this.width = this.height = size;
         this.boardModel = new Cell[size][size];
 
-        int row = 0;
-        int column = 0;
-        for(int i = 0; i < cellsValues.length; i++) {
-            if ((i + 1) % size == 0) {row += 1; column = 0;}
-            else {
-                if(cellsValues[i] == 0) {this.boardModel[row][column] = new Cell(row, column, 0, true);}
-                else {this.boardModel[row][column] = new Cell(row, column, cellsValues[i], false);}
+        int counter = 0;
+        for (int i = 0; i < size; i++) {
+            for(int j = 0; j < size; j++) {
+                if (cellsValues[counter] == 0) {this.boardModel[i][j] = new Cell(i, j, cellsValues[counter], true); counter++;}
+                else {this.boardModel[i][j] = new Cell(i, j, cellsValues[counter], false); counter++;}
             }
         }
     }
