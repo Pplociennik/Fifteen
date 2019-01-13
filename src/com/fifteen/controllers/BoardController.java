@@ -1,6 +1,7 @@
 package com.fifteen.controllers;
 
 import com.fifteen.entities.Board;
+import com.fifteen.entities.Cell;
 import com.fifteen.views.BoardConsoleView;
 
 public class BoardController {
@@ -51,5 +52,9 @@ public class BoardController {
 
     public void printSolvation() {
         boardView.showCheckingResult(this.checkIfSolvable());
+    }
+
+    public Board getBoardModel() {
+        return  this.boardModel;
     }
 }
